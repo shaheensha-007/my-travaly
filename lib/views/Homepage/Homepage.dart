@@ -27,16 +27,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final TextEditingController _searchController = TextEditingController();
 
-  void _performSearch(String query) {
-    if (query.trim().isNotEmpty) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SearchResultsPage(searchQuery: query),
-        ),
-      );
-    }
-  }
+  // void _performSearch(String query) {
+  //   if (query.trim().isNotEmpty) {
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => SearchResultsPage(searchQuery: query),
+  //       ),
+  //     );
+  //   }
+  // }
 
   @override
   void initState() {
@@ -142,27 +142,27 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
         const SizedBox(height: 16),
         // Search Bar
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: TextField(
-            controller: _searchController,
-            decoration: InputDecoration(
-              hintText: 'Search hotels, city, or country...',
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30.0),
-                borderSide: BorderSide.none,
-              ),
-              filled: true,
-              fillColor: Colors.grey[200],
-              suffixIcon: IconButton(
-                icon: const Icon(Icons.clear),
-                onPressed: () => _searchController.clear(),
-              ),
-            ),
-            onSubmitted: _performSearch,
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.all(16.0),
+        //   child: TextField(
+        //     controller: _searchController,
+        //     decoration: InputDecoration(
+        //       hintText: 'Search hotels, city, or country...',
+        //       prefixIcon: const Icon(Icons.search),
+        //       border: OutlineInputBorder(
+        //         borderRadius: BorderRadius.circular(30.0),
+        //         borderSide: BorderSide.none,
+        //       ),
+        //       filled: true,
+        //       fillColor: Colors.grey[200],
+        //       suffixIcon: IconButton(
+        //         icon: const Icon(Icons.clear),
+        //         onPressed: () => _searchController.clear(),
+        //       ),
+        //     ),
+        //     onSubmitted: _performSearch,
+        //   ),
+        // ),
 
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
