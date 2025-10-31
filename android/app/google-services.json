@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "785068857353",
+    "project_id": "met-technology",
+    "storage_bucket": "met-technology.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785068857353:android:7ebcab3efe7a7b9a4fc0d8",
+        "android_client_info": {
+          "package_name": "com.example.metechology"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785068857353-20oav2t222lgrihk24pefoqqmri1ra0f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.metechology",
+            "certificate_hash": "6918af5871e2568adfb837361048d8dcf0ac9d62"
+          }
+        },
+        {
+          "client_id": "785068857353-47tu3h6fg06hr9nprmvh39rk8bam4bdu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzqOZ7p_OK_f7C_WOirsqHHWpi9uqT4go"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785068857353-47tu3h6fg06hr9nprmvh39rk8bam4bdu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "785068857353-iuao8meiuqp1cmcejqdo390g8gg0ek69.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.metechology"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
