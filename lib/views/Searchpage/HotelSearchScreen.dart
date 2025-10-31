@@ -259,6 +259,9 @@ class _HotelSearchScreenState extends State<HotelSearchScreen> {
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: [
+              SizedBox(
+                height: 30,
+              ),
               // --- 1. Hotel ID / Location Search ---
               TextField(
                 controller: _hotelIdController,

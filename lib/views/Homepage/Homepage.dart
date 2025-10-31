@@ -9,7 +9,6 @@ import '../../core/Api/Api_Servies.dart';
 import '../../core/Repository/Register_Api/RegisterApi.dart';
 import '../../core/Repository/SimpleHostal_Api/Simplehostal_Api.dart';
 import '../../getx_controller/Registration_getx_contoller/RegstionController.dart';
-import '../Searchpage/SearchresultPage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,18 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final registrationController = Get.put(RegistrationController(RegistrationRepository(ApiService())));
   final simplehostalController = Get.put(SimplehotelGetx(SimplehostalRepository(ApiService())));
 
-  final TextEditingController _searchController = TextEditingController();
 
-  // void _performSearch(String query) {
-  //   if (query.trim().isNotEmpty) {
-  //     Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => SearchResultsPage(searchQuery: query),
-  //       ),
-  //     );
-  //   }
-  // }
 
   @override
   void initState() {
@@ -58,16 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
         elevation: 0,
-        centerTitle: true, // Centers the title for better symmetry
-        // title: const Text(
-        //   'Home',
-        //   style: TextStyle(
-        //     color: Colors.black,
-        //     fontSize: 20,
-        //     fontWeight: FontWeight.w600,
-        //     letterSpacing: 0.5,
-        //   ),
-        // ),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(
@@ -82,17 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           const SizedBox(width: 8),
-
-        // Optional padding at the end
         ],
-        // Optional: Add subtle bottom border or shadow if needed
-        // bottom: PreferredSize(
-        //   preferredSize: const Size.fromHeight(1),
-        //   child: Container(
-        //     color: Colors.grey.shade300,
-        //     height: 1,
-        //   ),
-        // ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
@@ -141,29 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
         const SizedBox(height: 16),
-        // Search Bar
-        // Padding(
-        //   padding: const EdgeInsets.all(16.0),
-        //   child: TextField(
-        //     controller: _searchController,
-        //     decoration: InputDecoration(
-        //       hintText: 'Search hotels, city, or country...',
-        //       prefixIcon: const Icon(Icons.search),
-        //       border: OutlineInputBorder(
-        //         borderRadius: BorderRadius.circular(30.0),
-        //         borderSide: BorderSide.none,
-        //       ),
-        //       filled: true,
-        //       fillColor: Colors.grey[200],
-        //       suffixIcon: IconButton(
-        //         icon: const Icon(Icons.clear),
-        //         onPressed: () => _searchController.clear(),
-        //       ),
-        //     ),
-        //     onSubmitted: _performSearch,
-        //   ),
-        // ),
-
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Text(
