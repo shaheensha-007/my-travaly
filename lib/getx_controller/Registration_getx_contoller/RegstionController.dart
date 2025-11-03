@@ -6,9 +6,8 @@ import '../../core/Repository/Register_Api/RegisterApi.dart';
 import '../../models/RegistationDeviceModel/RegistationDeviceModel.dart';
 
 class RegistrationController extends GetxController {
-  final RegistrationRepository registrationRepository;
+  final RegistrationRepository registrationRepository= RegistrationRepository();
 
-  RegistrationController(this.registrationRepository);
   final isLoading = false.obs;
   final errorMessage = ''.obs;
   final registrationData = Rxn<RegistationDeviceModel>();

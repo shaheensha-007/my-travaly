@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:metechology/Widgets/Navigationservice.dart';
 import 'package:metechology/getx_controller/Simplehostal_getx_controller/simplehostal_getx.dart';
+import '../../Contollers/Language_Sector_Contoller/Lanuage_sector_contoller.dart';
 import '../../Contollers/SignoutController/SignoutController.dart';
+import '../../Widgets/CommonText.dart';
 import '../Searchpage/HotelSearchScreen.dart';
 import '../../core/Api/Api_Servies.dart';
 import '../../core/Repository/Register_Api/RegisterApi.dart';
 import '../../core/Repository/SimpleHostal_Api/Simplehostal_Api.dart';
 import '../../getx_controller/Registration_getx_contoller/RegstionController.dart';
+import 'Lanuage_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,10 +22,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final appUser = FirebaseAuth.instance.currentUser;
+  String selectedLanguage = 'en';
 
   final signOutController = SiginoutController();
-  final registrationController = Get.put(RegistrationController(RegistrationRepository(ApiService())));
-  final simplehostalController = Get.put(SimplehotelGetx(SimplehostalRepository(ApiService())));
+  final registrationController = Get.put(RegistrationController());
+  final simplehostalController = Get.put(SimplehotelGetx());
 
 
 
@@ -47,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         surfaceTintColor: Colors.white,
         elevation: 0,
         centerTitle: true,
+        title: LanguageButton(),
         actions: [
           IconButton(
             icon: const Icon(
@@ -104,16 +109,16 @@ class _HomeScreenState extends State<HomeScreen> {
         if (appUser != null)
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  "👋 Welcome, ${appUser!.displayName?? 'User'}",
+                child: TranslatorWidget(
+                 text: "👋 Welcome, ${appUser!.displayName?? 'User'}",
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
         const SizedBox(height: 16),
-        const Padding(
+         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Text(
-            'Sample Hotels:',
+          child: TranslatorWidget(
+          text:'Sample Hotels:',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
@@ -131,8 +136,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       strokeWidth: 3,
                     ),
                     const SizedBox(height: 16),
-                    Text(
-                      'Searching hotels...',
+                    TranslatorWidget(
+                     text:  'Searching hotels...',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey.shade600,
@@ -159,8 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Icon(Icons.error_outline, size: 48, color: Colors.red.shade400),
                       const SizedBox(height: 12),
-                      Text(
-                        'Oops! Something went wrong',
+                      TranslatorWidget(text: 'Oops! Something went wrong',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -168,10 +172,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      Text(
-                        simplehostalController.errorMessage.value,
+                      TranslatorWidget(text: simplehostalController.errorMessage.value,
                         style: TextStyle(color: Colors.red.shade600),
-                        textAlign: TextAlign.center,
+                        //textAlign: TextAlign.center,
                       ),
                     ],
                   ),
@@ -191,7 +194,8 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Icon(Icons.search_off, size: 80, color: Colors.grey.shade300),
             const SizedBox(height: 16),
-            Text(
+            TranslatorWidget(
+              text:
               'No results found',
               style: TextStyle(
                 fontSize: 20,
@@ -200,7 +204,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
+            TranslatorWidget(
+              text:
               'Try adjusting your search criteria',
               style: TextStyle(
                 fontSize: 14,
@@ -297,8 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Icon(icon, color: color, size: 20),
         ),
         const SizedBox(width: 12),
-        Text(
-          title,
+        TranslatorWidget(text: title,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -370,7 +374,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      TranslatorWidget(text:
                         hotel.propertyName ?? 'Unknown Hotel',
                         style: const TextStyle(
                           fontSize: 16,
@@ -387,13 +391,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const SizedBox(width: 4),
                           Expanded(
-                            child: Text(
-                              '${hotel.address?.city ?? ''}, ${hotel.address?.state ?? ''}',
+                            child: TranslatorWidget(
+                              text: '${hotel.address?.city ?? ''}, ${hotel.address?.state ?? ''}',
                               style: TextStyle(
                                 fontSize: 13,
                                 color: Colors.grey.shade600,
                               ),
-                              overflow: TextOverflow.ellipsis,
+                              // overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ],
@@ -459,8 +463,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        city.address?.city ?? 'Unknown City',
+                      TranslatorWidget(text: city.address?.city ?? 'Unknown City',
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -468,8 +471,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      Text(
-                        '${city.address?.state ?? ''}, ${city.address?.country ?? ''}',
+                      TranslatorWidget(text: '${city.address?.state ?? ''}, ${city.address?.country ?? ''}',
                         style: TextStyle(
                           fontSize: 13,
                           color: Colors.grey.shade600,
@@ -536,16 +538,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        street.address?.street ?? 'Unknown Location',
+                      TranslatorWidget(text: street.address?.street ?? 'Unknown Location',
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: Color(0xFF2D3142),
                           height: 1.3,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                        // maxLines: 2,
+                        // overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 6),
                       Text(
@@ -614,8 +615,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(width: 16),
                 Expanded(
-                  child: Text(
-                    country.address?.country ?? 'Unknown Country',
+                  child: TranslatorWidget(text: country.address?.country ?? 'Unknown Country',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

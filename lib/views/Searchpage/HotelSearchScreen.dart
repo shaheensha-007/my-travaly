@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';// Import for date formatting
+import '../../Widgets/CommonText.dart';
 import '../../getx_controller/Searchhostel_getx_contoller/Searchhostel_getx_contoller.dart';
 
 // --- Styling Constants ---
@@ -216,7 +217,7 @@ class _HotelSearchScreenState extends State<HotelSearchScreen> {
             children: [
               Icon(icon, color: kPrimaryColor),
               const SizedBox(width: 8),
-              Text(
+              TranslatorWidget(text:
                 "$label: $value",
                 style: const TextStyle(
                   fontSize: 16,
@@ -248,7 +249,7 @@ class _HotelSearchScreenState extends State<HotelSearchScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
         elevation: 0,
-        title: const Text(
+        title: const TranslatorWidget(text:
           "🏨 Find Your Stay",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
@@ -368,8 +369,8 @@ class _HotelSearchScreenState extends State<HotelSearchScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 4.0, bottom: 4.0),
-                    child: Text(
-                      "Price Range",
+                    child: TranslatorWidget(
+                      text:"Price Range",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -377,7 +378,7 @@ class _HotelSearchScreenState extends State<HotelSearchScreen> {
                       ),
                     ),
                   ),
-                  Text(
+                  TranslatorWidget(text:
                     "₹${NumberFormat('#,##,###').format(lowPrice.toInt())} - ₹${NumberFormat('#,##,###').format(highPrice.toInt())}",
                     style: const TextStyle(
                       fontSize: 18,
@@ -418,8 +419,7 @@ class _HotelSearchScreenState extends State<HotelSearchScreen> {
                   ),
                   elevation: 5,
                 ),
-                child: const Text(
-                  '🔍 Search Hotels',
+                child:  TranslatorWidget(text: '🔍 Search Hotels',
                   style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),

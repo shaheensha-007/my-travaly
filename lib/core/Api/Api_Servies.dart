@@ -11,6 +11,7 @@ class ApiService {
     receiveTimeout: const Duration(seconds: 10),
     headers: {
       'authtoken': '71523fdd8d26f585315b4233e39d9263',
+
     },
   )) {
     // ✅ Add interceptor for visitorToken

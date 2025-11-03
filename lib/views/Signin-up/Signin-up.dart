@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:metechology/Widgets/Navigationservice.dart';
 import 'package:metechology/views/Homepage/Homepage.dart';
 import '../../Contollers/Google_Contoller/Google_Auth.dart';
+import '../../Widgets/CommonText.dart';
 import '../Register/register.dart';
 
 class GoogleAuthPage extends StatefulWidget {
@@ -15,6 +17,7 @@ class GoogleAuthPage extends StatefulWidget {
 
 class _GoogleAuthPageState extends State<GoogleAuthPage> {
   final googleAuthController = GoogleAuthController();
+  String selectedLanguage = 'en';
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +50,11 @@ class _GoogleAuthPageState extends State<GoogleAuthPage> {
               children: [
                 const Icon(Icons.hotel, size: 80, color: Colors.white),
                 const SizedBox(height: 30),
-                const Text(
-                  "Welcome to Hotel Finder",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,color: Colors.white),
-                ),
+                TranslatorWidget(
+                    text:"Welcome to Hotel Finder",
+                    // Change to:
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+                                   ),
 
                 const SizedBox(height: 50),
 
@@ -60,7 +64,7 @@ class _GoogleAuthPageState extends State<GoogleAuthPage> {
                   },
                 //  _handleSignIn,
                   icon: Icon(Icons.person,color: Colors.black,),
-                  label: const Text('Sign in with personal'),
+                  label:  TranslatorWidget(text: 'Sign in with personal'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
@@ -80,7 +84,7 @@ class _GoogleAuthPageState extends State<GoogleAuthPage> {
                  // _handleSignIn,
                   icon: Image.asset('assets/google.png',
                       height: 24, width: 24),
-                  label: const Text('Sign in with Google'),
+                  label:  TranslatorWidget(text: 'Sign in with Google'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,

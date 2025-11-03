@@ -4,20 +4,20 @@ import 'package:metechology/models/simplehostalModel/SimplehostalModel.dart';
 import '../../core/Repository/SimpleHostal_Api/Simplehostal_Api.dart';
 
 class SimplehotelGetx extends GetxController {
-  final SimplehostalRepository simplehostalRepository;
+  final SimplehostalRepository simplehostalRepositor=SimplehostalRepository();
 
-  SimplehotelGetx(this.simplehostalRepository);
 
   final isLoading = false.obs;
   final errorMessage = ''.obs;
   final simplehostaldata = Rxn<SimplehostalModel>();
+
 
   Future<void> simplehostal() async {
     isLoading(true);
     errorMessage('');
 
     try {
-      final result = await simplehostalRepository.simplehostal();
+      final result = await simplehostalRepositor.simplehostal();
       simplehostaldata.value = result;
 
       Get.snackbar(

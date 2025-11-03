@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../Contollers/Auth_Controller/Auth_check_contoller.dart';
 import '../../Contollers/SplanshContoller/Splansh_contoller.dart';
-import '../Signin-up/Signin-up.dart'; // <-- your real next page
+import '../Signin-up/Signin-up.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,11 +19,9 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // 1. Create the controller (vsync = this)
+    // Initialize controller with vsync
     _splashCtrl = SplashController(this);
-
-    // 2. Kick-off animation + navigation
-    _splashCtrl.startAndNavigate(context, const GoogleAuthPage());
+    _splashCtrl.startAndNavigate(context, const AuthChecker());
   }
 
   @override
@@ -33,17 +33,13 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     const List<Color> gradientColors = [
-      Color(0xFF17328D), // Your current blue as the starting color
-      Color(0xFFF08080), // A lighter, soft coral/salmon color
-      Color(0xFFE9967A) // A darker shade for the end of the gradient
+      Color(0xFF17328D),
+      Color(0xFFF08080),
+      Color(0xFFE9967A),
     ];
-    return Scaffold(
-      // 1. Remove the backgroundColor from Scaffold
-      // backgroundColor: const Color(0xFF17328D),
 
-      // 2. Use a Container as the body to hold the gradient
+    return Scaffold(
       body: Container(
-        // The BoxDecoration is where you apply the gradient
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -51,7 +47,6 @@ class _SplashScreenState extends State<SplashScreen>
             colors: gradientColors,
           ),
         ),
-        // 3. Place your existing content inside the Container's child
         child: Center(
           child: AnimatedBuilder(
             animation: _splashCtrl.controller,

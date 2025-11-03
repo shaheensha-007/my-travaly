@@ -4,9 +4,8 @@ import 'package:metechology/models/simplehostalModel/SimplehostalModel.dart';
 import '../../Api/Api_Servies.dart';
 
 class SimplehostalRepository {
-  final ApiService apiService;
+  final ApiService _apiService = ApiService();
 
-  SimplehostalRepository(this.apiService);
 
   Future<SimplehostalModel> simplehostal() async {
     try {
@@ -29,7 +28,7 @@ class SimplehostalRepository {
       debugPrint("📤 Request Body: $body");
 
       // 🔹 Send API Request
-      Response response = await apiService.post('', data: body);
+      Response response = await _apiService.post('', data: body);
       debugPrint("📡 API Response: ${response.data}");
 
       // ✅ Handle response by status code

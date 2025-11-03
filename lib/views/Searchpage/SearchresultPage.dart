@@ -1,5 +1,7 @@
 // search_results_page.dart
-import 'package:flutter/material.dart'; // Import the service
+import 'package:flutter/material.dart';
+
+import '../../Widgets/CommonText.dart'; // Import the service
 
 class SearchResultsPage extends StatefulWidget {
   final String searchQuery;
@@ -67,7 +69,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Results for: "${widget.searchQuery}"'),
+        title: TranslatorWidget(text: 'Results for: "${widget.searchQuery}"'),
       ),
       body: Column(
         children: [
@@ -85,8 +87,8 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
                 // Assuming the hotel object has 'name' and 'city' properties
                 return ListTile(
                   leading: const Icon(Icons.location_city),
-                  title: Text(hotel['name'] ?? 'Hotel Name'),
-                  subtitle: Text(hotel['city'] ?? 'City'),
+                  title: TranslatorWidget( text: hotel['name'] ?? 'Hotel Name',),
+                  subtitle: TranslatorWidget(text:hotel['city'] ?? 'City'),
                   onTap: () {
                     // Navigate to detail page
                   },
@@ -107,7 +109,7 @@ class _SearchResultsPageState extends State<SearchResultsPage> {
                   onPressed:(){},
                   //_currentPage > 1 ? () => _changePage(_currentPage - 1) : null,
                 ),
-                Text('Page $_currentPage of $_totalPages'),
+                TranslatorWidget(text: 'Page $_currentPage of $_totalPages'),
                 IconButton(
                   icon: const Icon(Icons.arrow_forward_ios),
                   onPressed:(){},

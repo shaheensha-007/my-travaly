@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:metechology/Contollers/Register%20controller/RegisterContoller.dart';
+
+import '../../Widgets/CommonText.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -65,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              const Text(
+               TranslatorWidget(text:
                 'Register & Join buddy!',
                 style: TextStyle(
                   fontSize: 20,
@@ -109,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     elevation: 0,
                   ),
-                  child: const Text(
+                  child:  TranslatorWidget(text:
                     'Sign Up',
                     style: TextStyle(
                       fontSize: 18,

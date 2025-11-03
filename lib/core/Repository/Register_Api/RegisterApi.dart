@@ -8,10 +8,9 @@ import '../../../models/RegistationDeviceModel/RegistationDeviceModel.dart';
 import '../../Api/Api_Servies.dart';
 
 class RegistrationRepository {
-  final ApiService apiService;
+  final ApiService _apiService = ApiService();
   static const String _visitorTokenKey = 'visitorToken';
 
-  RegistrationRepository(this.apiService);
 
   /// Registers the device and returns registration data
   Future<RegistationDeviceModel> registerDevice() async {
@@ -99,7 +98,7 @@ class RegistrationRepository {
 
   /// Sends registration request to API
   Future<Response> _sendRegistrationRequest(Map<String, dynamic> body) async {
-    return await apiService.post('', data: body);
+    return await _apiService.post('', data: body);
   }
 
   /// Handles successful API response
